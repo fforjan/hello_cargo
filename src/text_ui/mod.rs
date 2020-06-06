@@ -14,7 +14,7 @@ mod tests {
     #[test]
     fn it_works() {
         // arrange & act
-        let under_test = super::super::engine::create_guess();
+        let under_test = super::super::engine::tests::create_guess(42);
 
         // assert
         assert!(under_test.lost_message().ends_with("42"))
