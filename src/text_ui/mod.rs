@@ -1,6 +1,6 @@
 impl super::engine::Guess {
     pub fn lost_message(& self) -> String{
-        return format!("You've lost ! number was {}", self.number_to_guess);
+        return format!("You've lost in {} attempts ! number was {}", self.number_of_attempt, self.number_to_guess);
     }
 
     pub fn win_message(& self) -> String{
@@ -9,6 +9,14 @@ impl super::engine::Guess {
 
     pub fn display_lost_message(& self) {
         println!("{}", self.lost_message());
+    }
+
+    pub fn display_too_small(& self, wrong_guess: u16) {
+        println!("{} was too small", wrong_guess);
+    }
+
+    pub fn display_too_large(& self, wrong_guess: u16) {
+        println!("{} was too large", wrong_guess);
     }
 
     pub fn display_win_message(& self) {

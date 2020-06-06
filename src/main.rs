@@ -12,11 +12,19 @@ fn username() -> String {
 fn main() {    
     println!("Hello, {}!",  username());
 
-    let guess = engine::create_guess();
+    let mut guess = engine::create_guess();
 
     guess.display_welcome();
+        
+    let mut done = false;
 
-    guess.display_lost_message();
-    guess.display_win_message();
+    while !done {        
+        match guess.what_next(45) {
+            engine::GameStep::TooSmall => guess.display_too_small(45),
+            engine::GameStep::TooLarge => guess.display_too_large(45),
+            engine::GameStep::Win => { guess.display_win_message(); done = true; },
+            engine::GameStep::Lost => { guess.display_lost_message(); done = true; },
+        }
+    }
 }
 
