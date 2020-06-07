@@ -39,7 +39,7 @@ impl super::engine::Guess {
             match  input.parse::<u16>() 
             {
                 Ok(v) => result = v,
-                Err(e) => println!("We cannot find an interger")
+                Err(_e) => println!("We cannot find an interger")
             }
         }
     
