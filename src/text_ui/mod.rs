@@ -1,4 +1,4 @@
-extern crate readline;
+use std::io;
 
 impl super::engine::Guess {
     pub fn lost_message(& self) -> String{
@@ -34,9 +34,11 @@ impl super::engine::Guess {
 
         let mut result = 0;
         while result == 0 {
-            let input = readline::readline("> ").unwrap();
+            let mut input = String::new();
 
-            match  input.parse::<u16>() 
+            io::stdin().read_line(&mut input).unwrap();
+
+            match  input.trim().parse::<u16>() 
             {
                 Ok(v) => result = v,
                 Err(_e) => println!("We cannot find an interger")
