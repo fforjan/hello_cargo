@@ -43,7 +43,7 @@ impl Guess
 pub mod tests {
     pub fn create_guess(number_to_guess: u16, number_of_attempt: u16) -> super::Guess {
         super::Guess {
-            number_to_guess: number_to_guess, number_of_attempt : number_of_attempt
+            number_to_guess, number_of_attempt
         }
     }
 

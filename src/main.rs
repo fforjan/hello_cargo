@@ -19,9 +19,11 @@ fn main() {
     let mut done = false;
 
     while !done {
-        match guess.what_next(45) {
-            engine::GameStep::TooSmall => guess.display_too_small(45),
-            engine::GameStep::TooLarge => guess.display_too_large(45),
+
+        let user_entry = guess.read_guess();
+        match guess.what_next(user_entry) {
+            engine::GameStep::TooSmall => guess.display_too_small(user_entry),
+            engine::GameStep::TooLarge => guess.display_too_large(user_entry),
             engine::GameStep::Win => { guess.display_win_message(); done = true; },
             engine::GameStep::Lost => { guess.display_lost_message(); done = true; },
         }

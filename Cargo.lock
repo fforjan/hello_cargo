@@ -22,6 +22,7 @@ name = "hello_cargo"
 version = "0.1.0"
 dependencies = [
  "rand",
+ "readline",
 ]
 
 [[package]]
@@ -75,6 +76,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ca3129af7b92a17112d59ad498c6f81eaf463253766b90396d39ea7a39d6613c"
 dependencies = [
  "rand_core",
+]
+
+[[package]]
+name = "readline"
+version = "0.2.0"
+source = "git+https://github.com/shaleh/rust-readline#4223e676a0bb1fe7f35aba2832e6be5a2705d0bf"
+dependencies = [
+ "libc",
 ]
 
 [[package]]

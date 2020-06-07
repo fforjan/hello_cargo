@@ -1,3 +1,5 @@
+extern crate readline;
+
 impl super::engine::Guess {
     pub fn lost_message(& self) -> String{
         return format!("You've lost in {} attempts ! number was {}", self.number_of_attempt, self.number_to_guess);
@@ -25,6 +27,23 @@ impl super::engine::Guess {
 
     pub fn display_welcome(& self) {
         println!("Welcome to guess a number !");
+    }
+
+    pub fn read_guess(&self) -> u16 {
+        println!("Please enter a number between 0 and 1000:");
+
+        let mut result = 0;
+        while result == 0 {
+            let input = readline::readline("> ").unwrap();
+
+            match  input.parse::<u16>() 
+            {
+                Ok(v) => result = v,
+                Err(e) => println!("We cannot find an interger")
+            }
+        }
+    
+        return result;
     }
 
 }
