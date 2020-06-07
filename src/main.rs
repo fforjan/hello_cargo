@@ -18,7 +18,7 @@ fn main() {
         
     let mut done = false;
 
-    while !done {        
+    while !done {
         match guess.what_next(45) {
             engine::GameStep::TooSmall => guess.display_too_small(45),
             engine::GameStep::TooLarge => guess.display_too_large(45),

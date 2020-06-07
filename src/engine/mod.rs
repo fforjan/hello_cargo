@@ -7,6 +7,8 @@ pub struct Guess {
    pub number_of_attempt : u16
 }
 
+#[derive(PartialEq)]
+#[derive(Debug)]
 pub enum GameStep {
     Win,
     Lost,
@@ -43,5 +45,57 @@ pub mod tests {
         super::Guess {
             number_to_guess: number_to_guess, number_of_attempt : number_of_attempt
         }
+    }
+
+    #[test]
+    pub fn return_too_small(){
+
+        //arrange
+        let mut under_test = create_guess(42,0);
+
+        //act
+        let result = under_test.what_next(0);
+
+        //assert
+        assert_eq!(result, super::GameStep::TooSmall);
+    }
+
+    #[test]
+    pub fn return_too_large(){
+
+        //arrange
+        let mut under_test = create_guess(42,0);
+
+        //act
+        let result = under_test.what_next(100);
+
+        //assert
+        assert_eq!(result, super::GameStep::TooLarge);
+    }
+
+    #[test]
+    pub fn return_win(){
+
+        //arrange
+        let mut under_test = create_guess(42,0);
+
+        //act
+        let result = under_test.what_next(42);
+
+        //assert
+        assert_eq!(result, super::GameStep::Win);
+    }
+
+    #[test]
+    pub fn return_lost(){
+
+        //arrange
+        let mut under_test = create_guess(42, super::MAXNUMBEROFATTEMPT - 1);
+
+        //act
+        let result = under_test.what_next(0);
+
+        //assert
+        assert_eq!(result, super::GameStep::Lost);
     }
 }
